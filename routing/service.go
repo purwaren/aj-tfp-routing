@@ -4,26 +4,26 @@ package routing
 func Verification(contentType string, req Request, billerConfig BillerConfig, billerData BillerData) (string, error) {
 	ack := "00"
 
-	//validation type
+	// Validation type
 	if req.Type != "reqpaymentcode" {
 		ack = "02"
 		return ack, nil
 	}
 
-	//validation content type
+	// Validation content type
 	if !(contentType == "text/xml" || contentType == "application/xml") {
 		ack = "03"
 		return ack, nil
 
 	}
 
-	//validation biller status
+	// Validation biller status
 	if billerData.Status != 1 {
 		ack = "02"
 		return ack, nil
 	}
 
-	//verification signature
+	// Verification signature
 	// hasher := md5.New()
 	// hasher.Write([]byte(billerConfig.Username + billerConfig.Secret + req.BookingID))
 

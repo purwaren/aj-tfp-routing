@@ -19,8 +19,6 @@ import (
 
 func Verification (r *http.Request, billerConfig request.BillerConfig, req request.Request, billerData request.BillerData)(string, error){
 	var ack string
-
-
 	ack = "00"
 
 	//validation type

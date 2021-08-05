@@ -3,11 +3,10 @@ package routing
 import (
 	"crypto/md5"
 	"encoding/hex"
-	"net/http"
 )
 
 // Verification ...
-func Verification(header *http.Header, req Request, billerConfig BillerConfig, billerData BillerData) (string, error) {
+func Verification(contentType string, req Request, billerConfig BillerConfig, billerData BillerData) (string, error) {
 	ack := "00"
 
 	//validation type
@@ -17,7 +16,7 @@ func Verification(header *http.Header, req Request, billerConfig BillerConfig, b
 	}
 
 	//validation content type
-	if header.Get("Content-Type") != "text/xml" || header.Get("Content-Type") != "application/xml" {
+	if !(contentType == "text/xml" || contentType == "application/xml") {
 		ack = "03"
 		return ack, nil
 

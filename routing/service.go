@@ -1,10 +1,5 @@
 package routing
 
-import (
-	"crypto/md5"
-	"encoding/hex"
-)
-
 // Verification ...
 func Verification(contentType string, req Request, billerConfig BillerConfig, billerData BillerData) (string, error) {
 	ack := "00"
@@ -29,13 +24,13 @@ func Verification(contentType string, req Request, billerConfig BillerConfig, bi
 	}
 
 	//verification signature
-	hasher := md5.New()
-	hasher.Write([]byte(billerConfig.Username + billerConfig.Secret + req.BookingID))
+	// hasher := md5.New()
+	// hasher.Write([]byte(billerConfig.Username + billerConfig.Secret + req.BookingID))
 
-	if req.Signature != hex.EncodeToString(hasher.Sum(nil)) {
-		ack = "01"
-		return ack, nil
-	}
+	// if req.Signature != hex.EncodeToString(hasher.Sum(nil)) {
+	// 	ack = "01"
+	// 	return ack, nil
+	// }
 
 	return ack, nil
 }

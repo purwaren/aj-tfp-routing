@@ -9,13 +9,6 @@ import (
 func Verification(req Request, billerConfig BillerConfig, billerData BillerData) (string, error) {
 	ack := "00"
 
-	// Validate content type
-	if req.ContentType != "text/xml" && req.ContentType != "application/xml" {
-		ack = "03"
-		return ack, nil
-
-	}
-
 	// Validate type
 	if req.Type != "reqpaymentcode" && req.Type != "reqtrxstatus" {
 		ack = "02"
@@ -24,13 +17,13 @@ func Verification(req Request, billerConfig BillerConfig, billerData BillerData)
 
 	// Validate biller status
 	if billerData.Status != 1 {
-		ack = "XX"
+		ack = "05"
 		return ack, nil
 	}
 
 	// Validate api version
 	if req.APIVersion != billerConfig.SpecFormat {
-		ack = "XX"
+		ack = "05"
 		return ack, nil
 	}
 

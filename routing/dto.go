@@ -2,12 +2,11 @@ package routing
 
 // Request ...
 type Request struct {
-	Type        string
-	Username    string
-	BookingID   string
-	Signature   string
-	ContentType string
-	APIVersion  string
+	Type       string
+	Username   string
+	BookingID  string
+	Signature  string
+	APIVersion string
 }
 
 // BillerConfig ...

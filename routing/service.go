@@ -6,7 +6,7 @@ import (
 )
 
 // Verification ...
-func Verification(req Request, billerConfig BillerConfig, billerData BillerData) (string, error) {
+func Verification(req Request, billerData BillerData) (string, error) {
 	ack := "00"
 
 	// Validate type
@@ -22,14 +22,14 @@ func Verification(req Request, billerConfig BillerConfig, billerData BillerData)
 	}
 
 	// Validate api version
-	if req.APIVersion != billerConfig.SpecFormat {
+	if req.APIVersion != billerData.SpecFormat {
 		ack = "05"
 		return ack, nil
 	}
 
 	// Validate signature
 	hasher := md5.New()
-	hasher.Write([]byte(req.Username + billerConfig.Secret + req.BookingID))
+	hasher.Write([]byte(req.Username + billerData.Secret + req.BookingID))
 
 	if req.Signature != hex.EncodeToString(hasher.Sum(nil)) {
 		ack = "01"

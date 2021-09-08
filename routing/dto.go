@@ -9,20 +9,15 @@ type Request struct {
 	APIVersion string
 }
 
-// BillerConfig ...
-type BillerConfig struct {
+// BillerData ...
+type BillerData struct {
 	BillerID     string
 	Username     string
 	SpecFormat   string
 	Secret       string
 	GenerateMode string
-}
-
-// BillerData ...
-type BillerData struct {
-	BillerID string
-	Status   int64
-	Email    string
-	Name     string
-	Prefix   string
+	Status       int64
+	Email        string
+	Name         string
+	Prefix       string
 }

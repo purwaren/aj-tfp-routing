@@ -11,7 +11,7 @@ type Request struct {
 
 // BillerData ...
 type BillerData struct {
-	BillerID     string
+	BillerID     int64
 	Username     string
 	SpecFormat   string
 	Secret       string

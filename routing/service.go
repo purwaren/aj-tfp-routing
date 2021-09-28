@@ -29,7 +29,7 @@ func Verification(req Request, billerData BillerData) (string, error) {
 
 	// Validate signature
 	hasher := md5.New()
-	hasher.Write([]byte(req.Username + billerData.Secret + req.BookingID))
+	hasher.Write([]byte(req.Username + billerData.Password + req.BookingID))
 
 	if req.Signature != hex.EncodeToString(hasher.Sum(nil)) {
 		ack = "01"

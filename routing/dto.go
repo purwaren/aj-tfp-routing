@@ -14,7 +14,7 @@ type BillerData struct {
 	BillerID     int64
 	Username     string
 	SpecVersion  string
-	Secret       string
+	Password     string
 	GenerateMode string
 	Status       int64
 	Email        string

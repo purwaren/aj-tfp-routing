@@ -13,7 +13,7 @@ type Request struct {
 type BillerData struct {
 	BillerID     int64
 	Username     string
-	SpecFormat   string
+	SpecVersion  string
 	Secret       string
 	GenerateMode string
 	Status       int64

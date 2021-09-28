@@ -22,7 +22,7 @@ func Verification(req Request, billerData BillerData) (string, error) {
 	}
 
 	// Validate api version
-	if req.APIVersion != billerData.SpecFormat {
+	if req.APIVersion != billerData.SpecVersion {
 		ack = "05"
 		return ack, nil
 	}
